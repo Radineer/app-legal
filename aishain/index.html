@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI社員 設計法 ノウハウ共有会｜無料オンライン</title>
 <style>
-  :root{--paper:#fffdf7;--cream:#f1e9d6;--ink:#211d16;--muted:#6e6757;--red:#b5302a;--navy:#1c3b6e;--gold:#e7b53a;--line:#e2d7bd;--cta:#e0712a;--cta-d:#b3501a;--green:#1f7a4d;--pen:#2a4a86;}
+  :root{--paper:#fffdf9;--cream:#f6f0e3;--ink:#1f1b15;--muted:#6e6757;--red:#b5302a;--navy:#15315c;--gold:#c79a3e;--line:#ece3d1;--cta:#e8732a;--cta-d:#bd551b;--green:#1f7a4d;--pen:#2a4a86;--sh:0 4px 22px rgba(40,30,12,.07);--sh2:0 10px 30px rgba(40,30,12,.12);}
   *{box-sizing:border-box} html{scroll-behavior:smooth}
-  body{margin:0;background:#e8ddc6;color:var(--ink);font-family:-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;line-height:1.9;font-size:16px;}
+  body{margin:0;background:linear-gradient(180deg,#efe7d6,#e7dcc6 60%,#e2d6bd);color:var(--ink);font-family:-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;line-height:1.9;font-size:16px;-webkit-font-smoothing:antialiased;}
   .mincho{font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;}
   .hand{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-style:italic;}
-  .wrap{max-width:730px;margin:0 auto;background:var(--paper);box-shadow:0 0 60px rgba(0,0,0,.12);}
+  .wrap{max-width:720px;margin:0 auto;background:var(--paper);box-shadow:0 0 80px rgba(30,20,8,.16);}
   .pad{padding:30px 26px;}
-  .bar{background:var(--navy);color:#fff;text-align:center;font-weight:800;font-size:13.5px;padding:10px;display:flex;align-items:center;justify-content:center;gap:7px;}
+  .bar{background:linear-gradient(135deg,#13294d,#1d3f70);color:#fff;text-align:center;font-weight:700;font-size:13px;padding:11px 12px;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:.02em;}
+  .bar b{color:var(--gold);}
   h1{font-size:31px;line-height:1.5;font-weight:900;margin:6px 0 14px;}
   h2{font-size:22px;font-weight:900;line-height:1.55;margin:6px 0 12px;}
   mark{background:linear-gradient(transparent 56%,#ffdf6e 56%);padding:0 2px;font-weight:800;}
@@ -29,16 +30,17 @@
   .heroimg img{width:100%;border-radius:12px;display:block;box-shadow:0 8px 20px rgba(0,0,0,.16);}
   .imgcap{font-size:10.5px;color:var(--muted);text-align:right;margin-top:3px;}
   .stamp{position:absolute;right:-12px;top:-14px;width:84px;height:84px;transform:rotate(-13deg);}
-  .metabox{background:var(--cream);border:1px dashed var(--gold);border-radius:10px;padding:15px 17px;margin:16px 0;font-size:15px;}
+  .metabox{background:linear-gradient(180deg,#fffdf9,#f7f1e5);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:16px 18px;margin:18px 0;font-size:15px;box-shadow:var(--sh);}
   .metabox b{color:var(--red);} .metabox div{display:flex;gap:8px;align-items:flex-start;margin:3px 0;}
-  .cta{display:block;background:var(--cta);color:#fff;text-decoration:none;text-align:center;font-weight:900;font-size:19px;padding:18px;border-radius:12px;box-shadow:0 5px 0 var(--cta-d);margin:14px 0 6px;}
-  .cta:active{transform:translateY(2px);box-shadow:0 3px 0 var(--cta-d);}
+  .cta{display:block;background:linear-gradient(180deg,#ef8137,#e0712a);color:#fff;text-decoration:none;text-align:center;font-weight:900;font-size:19px;padding:19px;border-radius:14px;box-shadow:0 6px 0 var(--cta-d),0 12px 22px rgba(224,113,42,.32);margin:16px 0 6px;transition:transform .08s,box-shadow .08s;letter-spacing:.02em;}
+  .cta:hover{filter:brightness(1.03);}
+  .cta:active{transform:translateY(3px);box-shadow:0 3px 0 var(--cta-d),0 6px 12px rgba(224,113,42,.3);}
   .cta small{display:block;font-size:12px;font-weight:600;opacity:.95;margin-top:3px;}
   .ctanote{text-align:center;font-size:12px;color:var(--muted);}
-  .form{background:#fff;border:2px solid var(--cta);border-radius:12px;padding:16px;margin:10px 0;}
+  .form{background:#fff;border:1px solid var(--line);border-top:3px solid var(--cta);border-radius:14px;padding:18px;margin:12px 0;box-shadow:var(--sh2);}
   .form .ttl{font-weight:900;text-align:center;margin-bottom:6px;}
   .form input{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin:5px 0;font-size:15px;}
-  .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0;}
+  .box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0;box-shadow:var(--sh);}
   .imgband{width:100%;border-radius:12px;display:block;box-shadow:0 8px 20px rgba(0,0,0,.14);margin:6px 0 2px;}
   ul.chk{list-style:none;padding:0;margin:0;} ul.chk li{position:relative;padding:11px 0 11px 34px;border-bottom:1px dashed var(--line);}
   ul.chk li svg{position:absolute;left:2px;top:13px;} ul.chk li:last-child{border:none;}
@@ -66,7 +68,7 @@
 
 <div class="bar">
   <img src="img/aidojo-icon.png" alt="AI駆動塾" style="width:22px;height:22px;border-radius:4px;flex:0 0 auto;">
-  <span>AI駆動塾 主催｜参加無料・オンライン｜AI社員 設計法 ノウハウ共有会／次回 <span class="ph">6/24(水)21:00</span></span>
+  <span>AI駆動塾 主催　|　無料オンライン　|　<b>6/24(水) 21:00〜</b></span>
 </div>
 
 <!-- HERO -->
@@ -76,6 +78,7 @@
       <div class="sub">手が回らない経営者・個人事業主の方へ</div>
       <h1 class="mincho">その仕事、いつまで<br><span class="hl-circle red">"社長"<svg viewBox="0 0 100 50" preserveAspectRatio="none"><path d="M6,25 C10,8 90,6 94,24 C97,40 70,46 40,45 C18,44 4,40 8,28" fill="none" stroke="#b5302a" stroke-width="2.4" stroke-linecap="round"/></svg></span>が<br>やり続けますか？</h1>
       <p class="lead"><mark>たった一人で、20以上の事業を“AI社員”に任せて回す</mark>——その「何を・どう任せるか」の設計法を、そのまま渡す無料のノウハウ共有会です。当日は<b>あなたの業務を1つ、その場でAI社員化して実演</b>します。<br><span class="sub">※「稼げる」セミナーではありません。"仕組みの作り方"の話です。</span></p>
+      <a class="cta" href="https://members.ai-driven-school.com/seminar-apply" style="margin-top:14px;">無料で参加を申し込む<small>30秒で完了・オンライン・電話営業なし</small></a>
     </div>
     <div class="heroimg">
       <img src="img/ai-hero.png" alt="AI社員に任せて落ち着いて働く経営者のイメージ">
