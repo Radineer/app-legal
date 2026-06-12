@@ -2,6 +2,9 @@
 <html lang="ja"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI社員 設計法 ノウハウ共有会｜無料オンライン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#f7f4ee; --surface:#fffefb; --ink:#1b1813; --mut:#6c655a;
@@ -19,10 +22,11 @@ section + section{border-top:1px solid var(--hair)}
 .kick{font-size:12px;letter-spacing:.22em;color:var(--accent);font-weight:700;margin:0 0 20px;display:flex;align-items:center;gap:12px}
 .kick::before{content:"";width:26px;height:1px;background:var(--accent);display:inline-block}
 .num{font-variant-numeric:tabular-nums}
-h1{font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-size:33px;line-height:1.5;font-weight:800;letter-spacing:.01em;margin:0 0 22px}
+h1{font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-size:clamp(27px,8vw,33px);line-height:1.5;font-weight:800;letter-spacing:.01em;margin:0 0 22px}
 h2{font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-size:25px;line-height:1.55;font-weight:700;margin:0 0 18px}
 p{margin:0 0 18px}
 .lead{font-size:16.5px;color:#39342b}
+.lead-big{font-size:18px;font-weight:700;color:#2a2620;line-height:1.7}
 .mut{color:var(--mut)} .sm{font-size:13.5px}
 .u{background:linear-gradient(transparent 62%,rgba(143,46,35,.16) 62%);padding:0 1px;font-weight:700}
 .meta{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;margin:0 0 28px}
@@ -32,9 +36,10 @@ p{margin:0 0 18px}
 .meta dd{margin:0;font-size:14px;font-weight:700}
 .cta{display:block;background:var(--cta);color:#fff;text-decoration:none;text-align:center;
   font-weight:700;font-size:17px;padding:19px;border-radius:4px;letter-spacing:.04em;
-  transition:opacity .12s}
+  min-height:44px;transition:opacity .12s}
 .cta:hover{opacity:.88}
 .cta small{display:block;font-size:11.5px;font-weight:400;opacity:.75;margin-top:5px;letter-spacing:.06em}
+.magnet{font-size:13.5px;color:#46413a;border-left:2px solid var(--accent);padding:10px 0 10px 16px;margin:0 0 18px}
 .note{font-size:12.5px;color:var(--mut);margin-top:12px}
 figure{margin:30px 0 4px}
 figure img{width:100%;display:block;border:1px solid var(--line)}
@@ -43,19 +48,44 @@ figcaption{font-size:11px;color:var(--mut);text-align:right;margin-top:6px}
 .list li{counter-increment:n;position:relative;padding:18px 0 18px 44px;border-top:1px solid var(--hair)}
 .list li:first-child{border-top:none}
 .list li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:18px;
-  font-family:"Hiragino Mincho ProN",serif;font-size:15px;color:var(--accent);font-weight:700}
+  font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-size:15px;color:var(--accent);font-weight:700}
 .plain{list-style:none;padding:0;margin:0}
 .plain li{padding:14px 0;border-top:1px solid var(--hair)}
 .plain li:first-child{border-top:none}
+.split{border:1px solid var(--line);display:flex}
+.split div{flex:1;padding:22px 18px}
+.split div + div{border-left:1px solid var(--line)}
+.split .lbl{font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-size:16px;font-weight:700;margin:0 0 10px;color:var(--ink)}
+.split .txt{font-size:13.5px;color:#46413a;margin:0;line-height:1.75}
+.ba{border:1px solid var(--line);margin:30px 0 4px}
+.ba-row{display:flex;align-items:stretch}
+.ba-row + .ba-row{border-top:1px solid var(--hair)}
+.ba-side{flex:1;padding:18px 16px}
+.ba-side + .ba-side{border-left:1px solid var(--hair)}
+.ba-tag{font-size:10.5px;letter-spacing:.16em;color:var(--mut);margin:0 0 8px}
+.ba-side ul{list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.85}
+.ba-arrow{text-align:center;font-size:11px;letter-spacing:.2em;color:var(--accent);padding:8px;border-top:1px solid var(--hair);font-weight:700}
 .grid4{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
 .grid4 div{padding:18px 14px;font-size:14px;font-weight:700}
 .grid4 div:nth-child(odd){border-right:1px solid var(--hair)}
-.grid4 div:nth-child(-n+2){border-bottom:1px solid var(--hair)}
+.grid4 div:nth-child(-n+4){border-bottom:1px solid var(--hair)}
+.grid4 div:last-child{grid-column:1 / -1;border-right:none}
 .grid4 small{display:block;font-weight:400;color:var(--mut);font-size:11.5px;letter-spacing:.1em;margin-bottom:4px}
 .dark{background:var(--ink);color:#f3efe6}
 .dark .kick{color:#caa24a}.dark .kick::before{background:#caa24a}
 .dark h2{color:#fff}.dark .lead{color:#d8d2c6}
-.gift-title{font-family:"Hiragino Mincho ProN",serif;font-size:21px;font-weight:700;margin:0 0 10px}
+.gift-title{font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-size:21px;font-weight:700;margin:0 0 22px}
+.gift{list-style:none;padding:0;margin:0;counter-reset:g;border-top:1px solid rgba(255,255,255,.14)}
+.gift li{counter-increment:g;position:relative;padding:18px 0 18px 40px;border-bottom:1px solid rgba(255,255,255,.14)}
+.gift li::before{content:counter(g);position:absolute;left:0;top:18px;font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-size:16px;color:#caa24a;font-weight:700}
+.gift b{display:block;font-size:15px;font-weight:700;margin-bottom:3px}
+.gift span{font-size:13px;color:#bdb6a8;line-height:1.7}
+.tl{list-style:none;padding:0;margin:0}
+.tl li{position:relative;padding:18px 0 18px 88px;border-top:1px solid var(--hair)}
+.tl li:first-child{border-top:none}
+.tl .ph{position:absolute;left:0;top:18px;width:72px;font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-size:13px;font-weight:700;color:var(--accent)}
+.tl .core{font-weight:700}
+.tl .core .pill{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--accent);padding:1px 8px;border-radius:3px;margin-left:6px;letter-spacing:.04em}
 .faq dt{font-weight:700;margin:20px 0 5px;border-top:1px solid var(--hair);padding-top:18px}
 .faq dt:first-of-type{border-top:none;padding-top:0}
 .faq dd{margin:0;color:#46413a;font-size:15px}
@@ -63,91 +93,137 @@ figcaption{font-size:11px;color:var(--mut);text-align:right;margin-top:6px}
 .ps p{padding-left:18px;border-left:2px solid var(--accent)}
 .fine{color:var(--mut);font-size:11.5px;line-height:1.75}
 .fine a{color:var(--accent)}
-.voice{border-top:1px solid var(--hair);padding:18px 0;color:#46413a;font-size:14.5px}
-.voice span{display:block;color:var(--mut);font-size:12.5px;margin-top:6px}
-.sticky{position:sticky;bottom:0;background:var(--ink);padding:13px;text-align:center}
-.sticky a{color:#fff;font-weight:700;text-decoration:none;font-size:14.5px;letter-spacing:.04em}
+.sticky{position:sticky;bottom:0;background:var(--ink);padding:10px 14px}
+.sticky a{display:block;color:#fff;font-weight:700;text-decoration:none;font-size:15px;letter-spacing:.04em;text-align:center;padding:14px;min-height:44px}
 .brandbar{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-bottom:1px solid var(--hair);font-size:12px;letter-spacing:.06em}
-.brandbar .b{font-family:"Hiragino Mincho ProN",serif;font-weight:700;font-size:15px;letter-spacing:.08em}
+.brandbar .b{font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-weight:700;font-size:15px;letter-spacing:.08em}
 .brandbar .d{color:var(--mut)}
+@media (max-width:420px){
+  .meta dd{font-size:12.5px}
+  .meta dt{font-size:10px}
+  .split{flex-direction:column}
+  .split div + div{border-left:none;border-top:1px solid var(--line)}
+}
 </style></head>
 <body><div class="wrap">
 
-<div class="brandbar"><span class="b">AI駆動塾</span><span class="d">無料オンラインセミナー｜6/24<span class="num"></span>(水) 21:00–</span></div>
+<div class="brandbar"><span class="b">AI駆動塾</span><span class="d">無料オンラインセミナー｜6/24(水) 21:00–</span></div>
 
-<!-- HERO -->
+<!-- 01 HERO -->
 <section>
-  <p class="kick">手が回らない経営者・個人事業主の方へ</p>
+  <p class="kick">AIツールは試した。でも結局「自分でやった方が早い」で止まっている——そんな経営者・個人事業主の方へ</p>
   <h1>その仕事、いつまで<br>“社長”が<br>やり続けますか。</h1>
-  <p class="lead"><span class="u">たった一人で、20以上の事業を“AI社員”に任せて回す。</span>その「何を・どう任せるか」の設計法を、無料で公開します。当日は、あなたの業務を1つ、その場でAI社員化して実演します。</p>
+  <p class="lead-big"><span class="u">たった一人で、20以上の事業を“AI社員”に任せて回す。</span></p>
+  <p class="lead">その「何を・どう任せるか」の設計法を、無料で公開します。</p>
+  <p class="lead-big">当日は、あなたの業務を1つ、その場でAI社員化して実演します。</p>
   <dl class="meta">
     <div><dt>開催</dt><dd>6/24(水) 21:00–</dd></div>
     <div><dt>形式</dt><dd>オンライン 60–75分</dd></div>
     <div><dt>参加費</dt><dd>無料</dd></div>
   </dl>
-  <a class="cta" href="https://members.ai-driven-school.com/seminar-apply">無料で参加を申し込む<small>30秒で完了 ・ 電話営業なし</small></a>
+  <p class="magnet">お申込みの方には、まず「業務棚卸し診断シート」をお渡しします。何を任せられるか、当日までに整理できます。</p>
+  <a class="cta" href="https://members.ai-driven-school.com/seminar-apply?utm_source=lp&utm_medium=seminar&utm_campaign=aishain_0624">無料で参加を申し込む<small>30秒で完了 ・ カメラオフ可 ・ 電話営業なし</small></a>
   <p class="note">「稼げる」セミナーではありません。“仕組みの作り方”の話です。</p>
   <figure><img src="img/ai-hero.png" alt="AI社員に任せて落ち着いて働く経営者のイメージ"><figcaption>写真はイメージ</figcaption></figure>
 </section>
 
-<!-- 特典 -->
-<section class="dark">
-  <p class="kick">参加特典 ─ お持ち帰り</p>
-  <p class="gift-title">AI社員テンプレート 5種 ＋ 業務棚卸し診断シート</p>
-  <p class="lead" style="margin:0">リサーチ／発信／レポート／一次対応／経理補助。その場で、あなたの業務に1つ当てはめて持ち帰れます。</p>
+<!-- 02 二極化 -->
+<section>
+  <p class="kick">これからの分かれ道</p>
+  <h2>AIを「自分で使う人」と、<br>AIに「任せる人」。</h2>
+  <p class="lead">同じツールを持っていても、一日の使い方は正反対になります。自分で全部やる限り、時間は増えません。「何を任せるか」を設計できた人だけが、手を空けられる。</p>
+  <div class="split">
+    <div>
+      <p class="lbl">自分で使う</p>
+      <p class="txt">ツールを覚え、自分で操作する。一日の作業量は減らず、自分が止まれば仕事も止まる。</p>
+    </div>
+    <div>
+      <p class="lbl">任せる</p>
+      <p class="txt">何を任せるかを設計し、AI社員に渡す。自分は“決めること”に時間を使えるようになる。</p>
+    </div>
+  </div>
 </section>
 
-<!-- I -->
+<!-- 03 I -->
 <section>
   <p class="kick"><span class="num">01</span> いま起きていること</p>
   <h2>「自分が動かないと会社が止まる」。<br>でも、あなたのせいではありません。</h2>
   <p class="lead">世のAI情報は、ほとんどが「ツールの使い方」。だから「自分の会社で、何をどう任せるか」は誰も教えてくれません。</p>
   <ul class="plain">
-    <li>発信・資料・リサーチに追われ、本来の経営に時間が割けない</li>
+    <li>夜22時、明日の資料とSNS投稿がまだ手つかず。本来やるべき経営判断は、また明日に回っている。</li>
     <li>人を雇うほどではないが、自分が止まると会社も止まる</li>
     <li>ツールは試した。でも「自分でやった方が早い」で止まっている</li>
   </ul>
   <p class="lead mut" style="margin-top:22px">足りないのは“ツールの知識”ではなく、<span class="u">“何を任せるか”の設計</span>です。</p>
 </section>
 
-<!-- R -->
+<!-- 04 R -->
 <section>
   <p class="kick"><span class="num">02</span> 目指す状態</p>
   <h2>“任せて、手が空く”経営へ。</h2>
-  <figure><img src="img/ai-after.png" alt="時間に余裕のある経営者のイメージ"><figcaption>写真はイメージ</figcaption></figure>
-  <div class="grid4">
+  <div class="ba">
+    <div class="ba-row">
+      <div class="ba-side">
+        <p class="ba-tag">BEFORE ─ 社長が抱える業務の山</p>
+        <ul>
+          <li>リサーチ</li><li>発信</li><li>レポート</li><li>一次対応</li><li>経理補助</li>
+        </ul>
+      </div>
+      <div class="ba-side">
+        <p class="ba-tag">AFTER ─ AI社員に振り分け済み</p>
+        <ul>
+          <li>リサーチ → AI社員</li><li>発信 → AI社員</li><li>レポート → AI社員</li><li>一次対応 → AI社員</li><li>経理補助 → AI社員</li>
+        </ul>
+      </div>
+    </div>
+    <p class="ba-arrow">設計すれば、社長は“決めること”に集中できる</p>
+  </div>
+  <div class="grid4" style="margin-top:30px">
     <div><small>RESEARCH</small>リサーチ</div>
     <div><small>SHARE</small>発信</div>
     <div><small>REPORT</small>レポート</div>
     <div><small>SUPPORT</small>一次対応</div>
+    <div><small>ACCOUNTING</small>経理補助</div>
   </div>
   <p class="sm mut" style="margin-top:18px">AI社員が日々の実務を回し、社長は“決めること”に集中する。人を増やさず、仕組みで会社が回る状態です。</p>
   <p class="fine">成果や時間削減を保証するものではありません。設計の考え方をお伝えします。</p>
 </section>
 
-<!-- Q -->
+<!-- 05 Q -->
 <section class="dark">
   <p class="kick"><span class="num">03</span> 問い</p>
   <h2>その作業、本当に<br>“あなた”がやる必要、ありますか。</h2>
   <p class="lead" style="margin:0">「何を、どうAIに任せるか」を設計できたら——あなたの一日は、何に使えるようになるでしょうか。</p>
 </section>
 
-<!-- A -->
+<!-- 06 A -->
 <section>
-  <p class="kick"><span class="num">04</span> この会で渡すもの</p>
+  <p class="kick"><span class="num">04</span> 当日の流れ</p>
   <h2>60分で、設計法を<br>そのまま持ち帰ってください。</h2>
-  <figure><img src="img/ai-work.png" alt="AIが実務を進める画面のイメージ"><figcaption>当日は実際のAI社員の画面で実演します</figcaption></figure>
-  <ul class="list">
-    <li>「何をAIに任せられるか」の見極め方</li>
-    <li>リサーチ・発信・レポート・一次対応の、AI社員の作り方の型</li>
-    <li>人を増やさず、仕組みで会社を回す考え方</li>
-    <li>つまずく落とし穴と、運用のコツ</li>
+  <figure><img src="img/ai-work.png" alt="AIが実務を進める運営画面のイメージ"><figcaption>当日はこの画面を操作しながら、あなたの業務を1つAI社員化します。</figcaption></figure>
+  <ul class="tl">
+    <li><span class="ph">前半</span>何をAIに任せられるかの見極め方</li>
+    <li><span class="ph">中盤</span><span class="core">あなたの業務を1つ、その場でAI社員化<span class="pill">ライブデモ・本会の核</span></span></li>
+    <li><span class="ph">後半</span>リサーチ／発信／レポート／一次対応の作り方の型</li>
+    <li><span class="ph">終盤</span>つまずく落とし穴と運用のコツ ／ 質疑</li>
   </ul>
-  <a class="cta" href="https://members.ai-driven-school.com/seminar-apply" style="margin-top:30px">無料で参加を申し込む<small>30秒 ・ オンライン ・ 電話営業なし</small></a>
-  <p class="note" style="text-align:center">次回 6/24(水) 21:00–</p>
+  <a class="cta" href="https://members.ai-driven-school.com/seminar-apply?utm_source=lp&utm_medium=seminar&utm_campaign=aishain_0624" style="margin-top:30px">無料で参加を申し込む<small>30秒 ・ カメラオフ可 ・ 電話営業なし</small></a>
+  <p class="note" style="text-align:center">6/24(水) 21:00–</p>
 </section>
 
-<!-- 差別化 -->
+<!-- 07 特典 -->
+<section class="dark">
+  <p class="kick">参加特典</p>
+  <p class="gift-title">無料セミナー限定 ─ お持ち帰り 4点</p>
+  <ul class="gift">
+    <li><b>AI社員テンプレート5種</b><span>リサーチ／発信／レポート／一次対応／経理補助。そのまま叩き台に使える骨子。</span></li>
+    <li><b>業務棚卸し診断シート</b><span>何を任せられるかが一覧で分かる。申込後すぐ配布。</span></li>
+    <li><b>あなたの業務を1つ、その場でAI社員化（体験）</b><span>持ち帰れる物でなく「できた状態」を持ち帰る。</span></li>
+    <li><b>つまずく落とし穴と運用のコツ</b><span>自分で回すときに最初に詰まる箇所と、その避け方。</span></li>
+  </ul>
+</section>
+
+<!-- 08 差別化 -->
 <section>
   <p class="kick">ふつうのAI講座との違い</p>
   <ul class="list">
@@ -157,53 +233,52 @@ figcaption{font-size:11px;color:var(--mut);text-align:right;margin-top:6px}
   </ul>
 </section>
 
-<!-- 主催 -->
+<!-- 09 主催 / proof-of-work -->
 <section>
-  <p class="kick">主催</p>
-  <h2 style="font-size:21px">AI駆動塾</h2>
-  <p class="lead"><span class="u">20以上の事業をAIで運営してきた実践知を、塾として体系化。</span>「教える」だけでなく、「自分たちが毎日AIで事業を動かしている」当事者の設計を、そのまま共有します。</p>
-  <p class="fine">公式：ai-driven-school.com　〔登壇講師の実写／運営画面（実物）を加えると、さらに信頼が高まります〕</p>
+  <p class="kick">主催 ／ 実践の証拠</p>
+  <h2 style="font-size:21px">教える側が、今この瞬間も<br>20以上の事業をAIに任せて回している。</h2>
+  <p class="lead">机上の理論ではなく、毎日動いている運営画面そのものをお見せします。「自分たちが毎日AIで事業を動かしている」当事者の設計を、そのまま共有します。</p>
+  <figure><img src="img/ai-work.png" alt="AI社員の運営画面のイメージ"><figcaption>写真はイメージ</figcaption></figure>
+  <p class="fine">運営：Radineer株式会社（特定商取引法に基づく表記に運営者情報を記載）。公式：<a href="https://ai-driven-school.com">ai-driven-school.com</a></p>
 </section>
 
-<!-- 声 -->
-<section>
-  <p class="kick">参加された方の声</p>
-  <p class="fine" style="margin-bottom:6px">感想であり成果を保証しません。〔許諾済みの実際の声・顔写真に差し替え／無ければ掲載しない〕</p>
-  <div class="voice">「“何を任せられるか”の見極め方が一番の収穫。曖昧だったAI活用が、具体的な作業に落ちました。」<span>40代・経営者／許諾済</span></div>
-  <div class="voice">「テンプレをその場で自分の業務に当てはめられた。まず1つ任せてみます。」<span>30代・個人事業主／許諾済</span></div>
-</section>
+<!-- 声セクションは実物許諾が無いため非掲載（捏造防止） -->
 
-<!-- なぜ無料 + 限定 -->
+<!-- 10 なぜ無料 + リスク除去 -->
 <section>
   <p class="kick">なぜ、無料で共有するのか</p>
-  <p class="lead">後半で、実装まで伴走する有料プログラムをご案内します。だから無料で開催できます。<span class="u">ただし、その場で売り込むことはしません。</span>続きが必要な方だけ、ご自身で判断してください。</p>
-  <p class="sm" style="margin-top:20px">少人数制 ─ 質問にしっかり答えるため <b>先着20名</b> 限定。申込締切 <b>6/23(火) 23:59</b>、定員になり次第早期締切します。個別の電話・訪問営業は一切行いません。</p>
+  <p class="lead">後半で、設計から実装まで90日伴走するプログラムを“ご案内のみ”します。だから無料で開催できます。<span class="u">その場で売り込むことはしません。</span>続きが必要な方だけ、ご自身で判断してください。</p>
+  <p class="lead" style="margin-top:20px">有料に進む方にも、お試し（返金）期間を設けています。個人向けローンへの誘導はありません。無理に決めていただく仕組みではありません。</p>
+  <p class="sm mut" style="margin-top:20px">その場で参加者の業務をAI社員化して実演するため、対応できる人数に限りがあります。各回は少人数制で、複数回に分けて開催します。個別の電話・訪問営業は一切行いません。</p>
+  <p class="fine" style="margin-top:14px">返金条件の詳細は<a href="https://radineer.github.io/app-legal/aishain/tokushoho.html">特定商取引法に基づく表記</a>をご確認ください。</p>
 </section>
 
-<!-- FAQ -->
+<!-- 11 FAQ -->
 <section>
   <p class="kick">よくあるご質問</p>
   <dl class="faq">
     <dt>AI初心者でも大丈夫ですか？</dt><dd>基本操作ができる方向けです。完全未経験の方には少し早い場合があります。</dd>
     <dt>カメラはオフでいいですか？</dt><dd>はい、視聴のみでかまいません。</dd>
-    <dt>当日来られない場合は？</dt><dd>録画配信の回もあります。お申込み時にご相談ください。</dd>
+    <dt>当日来られない場合は？</dt><dd>回によっては録画をご用意することがあります（確約はできません）。お申込み時にご相談ください。</dd>
     <dt>しつこい営業はありませんか？</dt><dd>個別の電話営業はしません。判断はあなたに委ねます。</dd>
+    <dt>結局、有料サービスに勧誘されますか？</dt><dd>後半でご案内はしますが、その場での契約や個別の電話営業は一切しません。判断は持ち帰っていただけます。</dd>
+    <dt>自分の業種でもAIに任せられますか？</dt><dd>当日は参加者の業務を1つ、その場でAI社員化して実演します。汎用論ではなく、ご自身の作業に当てはめて持ち帰れます。</dd>
   </dl>
 </section>
 
-<!-- PS -->
+<!-- 12 PS -->
 <section>
   <div class="ps">
     <p><b>追伸　</b>「自分がやらないと回らない」と感じているなら、それは能力ではなく<span class="u">“仕組みを設計していないだけ”</span>かもしれません。今日の60分で、何を手放せるかが見えます。</p>
-    <p style="margin-bottom:0"><b>追々伸　</b>各回は少人数限定です。日程が合ううちに、お早めに。</p>
+    <p style="margin-bottom:0"><b>追々伸　</b>各回は少人数制です。日程が合ううちに、お早めに。</p>
   </div>
 </section>
 
-<!-- 最終CTA -->
+<!-- 13 最終CTA -->
 <section>
   <h2 style="text-align:center;font-size:23px">自分が動き続けるか、<br>仕組みに動いてもらうか。</h2>
-  <a class="cta" href="https://members.ai-driven-school.com/seminar-apply" style="margin-top:22px">無料で参加を申し込む<small>参加費無料 ・ テンプレート集つき ・ 電話営業なし</small></a>
-  <p class="note" style="text-align:center">6/24(水) 21:00–／先着20名 限定</p>
+  <a class="cta" href="https://members.ai-driven-school.com/seminar-apply?utm_source=lp&utm_medium=seminar&utm_campaign=aishain_0624" style="margin-top:22px">無料で席を確保する<small>参加費無料 ・ カメラオフ可 ・ 電話営業なし</small></a>
+  <p class="note" style="text-align:center">6/24(水) 21:00–／各回 少人数制・複数回開催</p>
   <p class="fine" style="margin-top:24px">
     本会は生成AIの業務活用に関する教育コンテンツであり、収益・成果・効果を保証するものではありません。記載の実績・数値は、事実に基づくもののみ掲載します。<br>
     <a href="https://radineer.github.io/app-legal/aishain/tokushoho.html">特定商取引法に基づく表記</a>（運営者情報・返金条件を含む）。
@@ -211,5 +286,5 @@ figcaption{font-size:11px;color:var(--mut);text-align:right;margin-top:6px}
 </section>
 
 </div>
-<div class="sticky"><a href="https://members.ai-driven-school.com/seminar-apply">無料で参加を申し込む（30秒）</a></div>
+<div class="sticky"><a href="https://members.ai-driven-school.com/seminar-apply?utm_source=lp&utm_medium=seminar&utm_campaign=aishain_0624">無料で席を確保する（30秒・電話営業なし）</a></div>
 </body></html>
