@@ -37,3 +37,6 @@ coverage/
 *.bak
 *.bak.*
 *.bak-*
+.venv*/
+.dart_tool/
+*.log.*
